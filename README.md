@@ -27,12 +27,12 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./result.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Github](https://github.com/artemkotko14/time-tracking-dashboard)
+- Live Site URL: [Webpage](https://artemkotko14.github.io/time-tracking-dashboard/)
 
 ## My process
 
