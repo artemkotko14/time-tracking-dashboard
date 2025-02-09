@@ -1,0 +1,236 @@
+@import "./variables";
+@mixin flex-center($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+@mixin background-image($category, $color) {
+  background-image: url("../images/icon-#{$category}.svg");
+  background-repeat: no-repeat;
+  background-position: top -0.5rem right 1rem;
+  background-size: 4.5rem;
+  background-color: $color;
+}
+body {
+  @include flex-center(column);
+  background-color: $very-dark-blue;
+  font-family: $Rubik;
+  margin: 0;
+  padding: 0;
+  min-height: 100svh;
+}
+main {
+  @include flex-center(column);
+  gap: 1rem;
+}
+.category {
+  background-color: $dark-blue;
+  min-width: 19rem;
+  width: 100%;
+  border-radius: 15px;
+}
+.category :hover {
+  filter: brightness(1.3); /* Increase brightness by 30% */
+  cursor: pointer;
+}
+.report {
+  background-color: $dark-blue;
+  min-width: 19rem;
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.person {
+  background-color: $blue;
+  @include flex-center(row);
+  justify-content: flex-start;
+  border-radius: 15px;
+  padding: 2rem;
+}
+.person__avatar {
+  vertical-align: middle;
+  width: 3.7rem;
+  height: 3.7rem;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-right: 1rem;
+}
+.person__name p {
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: $pale-blue;
+}
+.person__name h2 {
+  font-weight: 300;
+  font-size: 1.4rem;
+  color: white;
+}
+.frequency {
+  padding: 1rem;
+
+  & ul {
+    list-style: none;
+    @include flex-center(row);
+    justify-content: space-between;
+    padding-inline-start: 0;
+  }
+  & button {
+    background-color: $dark-blue;
+    border: none;
+    color: $desaturated-blue;
+  }
+  & button:hover,
+  & button:focus {
+    cursor: pointer;
+    color: whitesmoke;
+    border: none;
+    outline: none; /* Removes default focus outline */
+    box-shadow: none; /* Ensures no focus glow appears */
+  }
+  & .active {
+    color: whitesmoke;
+  }
+}
+
+.work {
+  @include background-image(work, $light-red-work);
+  background-size: 4rem;
+}
+.play {
+  @include background-image(play, $soft-blue-play);
+}
+.study {
+  @include background-image(study, $light-red-study);
+}
+.exercise {
+  @include background-image(exercise, $lime-green-exercise);
+  background-position: top -0.1rem right 1rem;
+}
+.social {
+  @include background-image(social, $violet-social);
+  background-position: top -0.8rem right 1rem;
+  background-size: 4rem;
+}
+.selfcare {
+  @include background-image(self-care, $soft-orange-self-care);
+  background-size: 4rem;
+  background-position: top -1rem right 1rem;
+}
+
+.content {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: $dark-blue;
+  border-radius: 15px;
+  color: white;
+  display: grid;
+  grid-template-areas:
+    "a b"
+    "c d";
+  justify-content: space-between;
+
+  & h3 {
+    font-weight: 500;
+    grid-area: a;
+  }
+  & .time {
+    font-weight: 300;
+    font-size: 2rem;
+    grid-area: c;
+    justify-self: start;
+  }
+
+  & img {
+    grid-area: b;
+    justify-self: end; /* Aligns image to the right */
+    align-self: center; /* Aligns image to the center */
+  }
+
+  & .previousTime {
+    font-size: 0.9rem;
+    color: $pale-blue;
+    justify-self: end;
+    align-self: center;
+  }
+}
+
+// Desktop design
+
+@media (min-width: 50rem) {
+  main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .report {
+    grid-row: 1/3;
+    height: 100%;
+    min-width: auto; /* Reset min-width */
+    max-width: 14rem; /* Set a smaller max width */
+  }
+  .category {
+    min-width: auto;
+    max-width: 14rem;
+    background-size: 3.5rem;
+  }
+  .person {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 4rem;
+    & h2 {
+      font-size: 2.2rem;
+      line-height: 1.2;
+    }
+
+    .person__avatar {
+      margin-bottom: 1.5rem;
+      width: 4.5rem;
+      height: 4.5rem;
+    }
+  }
+  .frequency ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .content {
+    display: grid;
+    grid-template-areas:
+      "a d"
+      "b b"
+      "c c";
+    & h3 {
+      grid-area: a;
+      font-size: 0.9rem;
+    }
+    & .time {
+      grid-area: b;
+      justify-self: start;
+      font-size: 3rem;
+    }
+    & .previousTime {
+      grid-area: c;
+      justify-self: start;
+      font-size: 0.8rem;
+    }
+    & img {
+      grid-area: d;
+      transform: scale(0.6, 1);
+    }
+  }
+  .frequencyBtn {
+    padding: 0.3rem 1rem;
+  }
+  .selfcare,
+  .social {
+    background-size: 3.2rem;
+    background-position: top -0.6rem right 1rem;
+  }
+  .play {
+    background-position: top -0.3rem right 1rem;
+  }
+}
