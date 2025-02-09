@@ -1,4 +1,6 @@
-fetch("./data.json")
+fetch(
+  "https://raw.githubusercontent.com/artemkotko14/time-tracking-dashboard/main/data.json"
+)
   .then((response) => {
     if (!response.ok) {
       console.log("Oops! Something went wrong.");
